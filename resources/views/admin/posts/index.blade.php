@@ -25,7 +25,7 @@
                 
             <tr>
                 <td scope="row">{{$post->id}}</td>
-                <td><img src="{{$post->image}}" alt="{{$post->title}}"></td>
+                <td><img src="{{asset('storage/' . $post->image)}}" alt="{{$post->title}}"></td>
                 <td>{{$post->title}}</td>
                 <div class="d-flex flex-column"></div>    
             </tr>
