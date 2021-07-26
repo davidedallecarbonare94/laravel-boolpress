@@ -45,7 +45,6 @@
       <textarea class="form-control" name="body" id="body" rows="4">{{old('body')}}</textarea>
     </div>
     <button type="submit">Submit</button>
-    @endsection
-
-
-</form>
+    
+  </form>
+  @endsection

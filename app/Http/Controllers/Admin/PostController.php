@@ -43,10 +43,13 @@ class PostController extends Controller
             'image' => 'nullable | image | max:50',
             'body' => 'required'
         ]);
+        //opzione con has file in store, altro metodo in update
+        if($request->hasFile('image')){
 
-        $file_path = Storage::put('post_images', $validateData['image']);
-
-        $validateData['image'] = $file_path;
+            $file_path = Storage::put('post_images', $validateData['image']);
+    
+            $validateData['image'] = $file_path;
+        }
         
         Post::create($validateData);
         return redirect()->route('admin.posts.index');
@@ -85,9 +88,15 @@ class PostController extends Controller
     {
         $validateData = $request->validate([
             'title' => 'required | min:5 | max:255',
-            'image' => 'nullable | max:255',
+            'image' => 'nullable | image | max:50',
             'body' => 'required'
         ]);
+        //$request->hasFile('image');
+        if(array_key_exists('image', $validateData)) {
+            $file_path = Storage::put('post_images', $validateData['image']);
+            $validateData['image'] = $file_path;
+        }
+
         $post->update($validateData);
         return redirect()->route('admin.posts.index');
     }

@@ -15,7 +15,7 @@
     </div>
     @endif
 
-<form action="{{route('admin.posts.update', $post->id)}}" method="post">
+<form action="{{route('admin.posts.update', $post->id)}}" method="post" enctype="multipart/form-data">
     @csrf 
     @method('PUT')
 
@@ -24,17 +24,24 @@
       <input type="text" name="title" id="title" class="form-control" placeholder="add a title" aria-describedby="helpId" value="{{$post->title}}">
       <small id="helpId" class="text-muted">Type a title for the current post, max: 255 char</small>
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="image">Cover image</label>
-      <input type="text" name="image" id="image" class="form-control" placeholder="add a title" aria-describedby="helpId" value="{{$post->image}}">
+      <input type="text" name="image" id="image" class="form-control" placeholder="add a title" aria-describedby="helpId">
       <small id="helpId" class="text-muted">Type a image url for the current post, max: 255 char</small>
+    </div> -->
+
+    <div class="form-group">
+      <label for="image">Edit Cover image</label>
+      <img src="{{asset('storage/' . $post->image)}}" alt="">
+      <input type="file" name="image" id="image">
     </div>
+
     <div class="form-group">
       <label for="body">Body</label>
       <textarea class="form-control" name="body" id="body" rows="4">{{$post->body}}</textarea>
     </div>
     <button type="submit">Update</button>
-    @endsection
-
-
-</form>
+    
+    
+  </form>
+  @endsection
