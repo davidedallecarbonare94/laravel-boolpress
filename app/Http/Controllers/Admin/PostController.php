@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
-use Illiminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -40,7 +40,7 @@ class PostController extends Controller
     {
         $validateData = $request->validate([
             'title' => 'required | min:5 | max:255',
-            'image' => 'nullable | image | max:50',
+            'image' => 'nullable | image | max:500',
             'body' => 'required'
         ]);
         //opzione con has file in store, altro metodo in update

@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('gusts.posts.show', compact('post'));
+        return view('guests.posts.show', compact('post'));
     }
 
     
