@@ -5,15 +5,7 @@
 
 <h1>Create a new Post</h1>
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+@include('partials.errors')
 
 <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
     @csrf 
