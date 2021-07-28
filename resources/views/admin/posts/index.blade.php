@@ -27,7 +27,22 @@
                 <td scope="row">{{$post->id}}</td>
                 <td><img src="{{asset('storage/' . $post->image)}}" alt="{{$post->title}}"></td>
                 <td>{{$post->title}}</td>
-                <div class="d-flex flex-column"></div>    
+                <td class="d-flex">
+                <a href="{{route('admin.posts.show', $post->id )}}" class="btn btn-primary">
+                    Show
+                </a>
+                <a href="{{route('admin.posts.edit', $post->id )}}" class="btn btn-secondary">
+                    Edit
+                </a>
+
+                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+
+            </td>    
             </tr>
 
 

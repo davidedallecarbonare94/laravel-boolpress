@@ -7,6 +7,7 @@
 <div class="container">
     <img class="img-fluid" src="{{$post->image}}" alt="{{$post->title}}">
     <h4 class="display-1">{{$post->title}}</h4>
+    <h5>Category: {{$post->category ? $post->category->name : 'Uncategorized'}}</h5>
     <p class="lead">{{$post->body}}</p>
     <a href="{{route('posts.index')}}">Go Back</a>
 </div>
